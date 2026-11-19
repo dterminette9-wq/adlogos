@@ -33,7 +33,7 @@ nav a:hover{color:var(--gold)}
 .btn.blue{background:var(--blue);color:white}
 .hero{padding:64px 0 60px;background:radial-gradient(ellipse at 82% 18%,#073b79 0,transparent 38%),radial-gradient(ellipse at 15% 50%,#5a3407 0,transparent 42%),#030407;position:relative;overflow:hidden}
 .hero:after{content:"";display:block;height:1px;width:100%;position:absolute;bottom:0;left:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 18px var(--gold)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;position:relative;z-index:1}.hero-presenter{position:absolute;left:max(0px,calc((100vw - 1160px)/2 - 25px));bottom:0;width:180px;height:245px;object-fit:cover;object-position:top;border-radius:100px 100px 0 0;opacity:.94;filter:drop-shadow(0 0 22px #f5bd3560);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;position:relative;z-index:1}.hero-presenter{position:absolute;left:max(0px,calc((100vw - 1160px)/2 - 25px));bottom:0;width:260px;height:360px;object-fit:cover;object-position:top;border-radius:130px 130px 0 0;opacity:1;z-index:2;filter:drop-shadow(0 0 22px #f5bd3560);mask-image:linear-gradient(to bottom,#000 78%,transparent)}.campaign-img{position:absolute;inset:0;width:400%;height:100%;max-width:none;object-fit:fill;z-index:0;pointer-events:none}.campaign-img.q0{transform:translateX(0)}.campaign-img.q1{transform:translateX(-25%)}.campaign-img.q2{transform:translateX(-50%)}.campaign-img.q3{transform:translateX(-75%)}.phone-screen>*:not(.campaign-img){position:relative;z-index:1;text-shadow:0 2px 8px #000}.portfolio-item{position:relative;overflow:hidden}.portfolio-item .campaign-img{height:100%}.portfolio-item{isolation:isolate}.portfolio-item:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent,#0008);z-index:0}.portfolio-item{color:#fff;text-shadow:0 2px 8px #000}.portfolio-item:not(:has(.campaign-img)){background:#151515}
 .eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase}
 h1{font-size:clamp(42px,6vw,69px);line-height:1.06;margin:18px 0}
 h1 span{color:var(--gold);text-shadow:0 5px 22px #f5bd3560}
@@ -173,10 +173,10 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
    <p>A look at the campaigns and creative work ADLOGOS can help you create.</p>
   </div>
   <div class="phone-grid">
-   <div class="phone-wrap"><div class="phone"><div class="phone-screen summer"><span class="ad-label">SUMMER COLLECTION</span><h3>Summer<br>Vibes</h3><p>Bring the heat. Make every moment count.</p><div class="ad-foot">NEW SEASON • NEW STYLE</div></div></div><div class="phone-caption">Summer Vibes Campaign</div></div>
-   <div class="phone-wrap"><div class="phone"><div class="phone-screen coffee"><span class="ad-label">NOVA COFFEE</span><h3>Wake Up<br>To Better.</h3><p>Your daily moment of goodness.</p><div class="ad-foot">FRESHLY BREWED • EVERY DAY</div></div></div><div class="phone-caption">Nova Coffee Advertisement</div></div>
-   <div class="phone-wrap"><div class="phone"><div class="phone-screen beatriddims"><span class="ad-label">BEATRIDDIMS AI</span><h3>YOUR MUSIC.<br>YOUR VISUALS.</h3><p>Turn your track into an AI music video.</p><div class="ad-foot">CREATE YOUR NEXT VIDEO</div></div></div><div class="phone-caption">BeatRiddims AI Campaign</div></div>
-   <div class="phone-wrap"><div class="phone"><div class="phone-screen stride"><span class="ad-label">STRIDE ACTIVE</span><h3>Move<br>Beyond.</h3><p>Made for your next challenge.</p><div class="ad-foot">PERFORMANCE • STYLE • ENERGY</div></div></div><div class="phone-caption">Stride Active Campaign</div></div>
+   <div class="phone-wrap"><div class="phone"><div class="phone-screen summer"><img class="campaign-img q2" src="assets/campaigns.jpg?v=2" alt="Summer Vibes campaign artwork"><span class="ad-label">SUMMER COLLECTION</span><h3>Summer<br>Vibes</h3><p>Bring the heat. Make every moment count.</p><div class="ad-foot">NEW SEASON • NEW STYLE</div></div></div><div class="phone-caption">Summer Vibes Campaign</div></div>
+   <div class="phone-wrap"><div class="phone"><div class="phone-screen coffee"><img class="campaign-img q1" src="assets/campaigns.jpg?v=2" alt="Nova Coffee campaign artwork"><span class="ad-label">NOVA COFFEE</span><h3>Wake Up<br>To Better.</h3><p>Your daily moment of goodness.</p><div class="ad-foot">FRESHLY BREWED • EVERY DAY</div></div></div><div class="phone-caption">Nova Coffee Advertisement</div></div>
+   <div class="phone-wrap"><div class="phone"><div class="phone-screen beatriddims"><img class="campaign-img q3" src="assets/campaigns.jpg?v=2" alt="BeatRiddims AI campaign artwork"><span class="ad-label">BEATRIDDIMS AI</span><h3>YOUR MUSIC.<br>YOUR VISUALS.</h3><p>Turn your track into an AI music video.</p><div class="ad-foot">CREATE YOUR NEXT VIDEO</div></div></div><div class="phone-caption">BeatRiddims AI Campaign</div></div>
+   <div class="phone-wrap"><div class="phone"><div class="phone-screen stride"><img class="campaign-img q0" src="assets/campaigns.jpg?v=2" alt="Stride Active campaign artwork"><span class="ad-label">STRIDE ACTIVE</span><h3>Move<br>Beyond.</h3><p>Made for your next challenge.</p><div class="ad-foot">PERFORMANCE • STYLE • ENERGY</div></div></div><div class="phone-caption">Stride Active Campaign</div></div>
   </div>
  </div>
 </section>
@@ -189,10 +189,10 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
    <p>Stunning campaign concepts. Bold creative directions.</p>
   </div>
   <div class="portfolio-grid">
-   <div class="portfolio-item p1">STRIDE</div>
-   <div class="portfolio-item p2">NOVA COFFEE</div>
-   <div class="portfolio-item p3">SUMMER VIBES</div>
-   <div class="portfolio-item p4">GLOW LAB</div>
+   <div class="portfolio-item p1"><img class="campaign-img q0" src="assets/campaigns.jpg?v=2" alt="Stride Active portfolio artwork">STRIDE</div>
+   <div class="portfolio-item p2"><img class="campaign-img q1" src="assets/campaigns.jpg?v=2" alt="Nova Coffee portfolio artwork">NOVA COFFEE</div>
+   <div class="portfolio-item p3"><img class="campaign-img q2" src="assets/campaigns.jpg?v=2" alt="Summer Vibes portfolio artwork">SUMMER VIBES</div>
+   <div class="portfolio-item p4"><img class="campaign-img q3" src="assets/campaigns.jpg?v=2" alt="Glow Lab portfolio artwork">GLOW LAB</div>
   </div>
  </div>
 </section>
