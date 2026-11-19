@@ -31,9 +31,9 @@ nav a:hover{color:var(--gold)}
 .btn{display:inline-block;padding:12px 21px;border-radius:28px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#101014;font-weight:800;font-size:14px;box-shadow:0 0 0 rgba(217,183,110,0);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 0 24px var(--gold-glow)}
 .btn.blue{background:var(--blue);color:white}
-.hero{padding:64px 0 60px;background:radial-gradient(ellipse at 82% 18%,#073b79 0,transparent 38%),radial-gradient(ellipse at 15% 50%,#5a3407 0,transparent 42%),#030407;position:relative;overflow:hidden}
+.hero{padding:82px 0 76px;background:radial-gradient(ellipse at 82% 18%,#073b79 0,transparent 38%),radial-gradient(ellipse at 15% 50%,#5a3407 0,transparent 42%),#030407;position:relative;overflow:hidden}
 .hero:after{content:"";display:block;height:1px;width:100%;position:absolute;bottom:0;left:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 18px var(--gold)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;position:relative;z-index:1}.hero-presenter{position:absolute;left:max(0px,calc((100vw - 1160px)/2 - 25px));bottom:0;width:260px;height:360px;object-fit:cover;object-position:top;border-radius:130px 130px 0 0;opacity:1;z-index:2;filter:drop-shadow(0 0 22px #f5bd3560);mask-image:linear-gradient(to bottom,#000 78%,transparent)}.phone-screen>*{position:relative;z-index:1;text-shadow:0 2px 8px #000}.portfolio-item{position:relative;overflow:hidden;color:#fff;text-shadow:0 2px 8px #000;isolation:isolate}.portfolio-item:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent,#0008);z-index:0}.portfolio-item{background-color:#151515}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center;position:relative;z-index:1}.hero-presenter{display:none}.phone-screen>*{position:relative;z-index:1;text-shadow:0 2px 8px #000}.portfolio-item{position:relative;overflow:hidden;color:#fff;text-shadow:0 2px 8px #000;isolation:isolate}.portfolio-item:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent,#0008);z-index:0}.portfolio-item{background-color:#151515}
 .eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase}
 h1{font-size:clamp(42px,6vw,69px);line-height:1.06;margin:18px 0}
 h1 span{color:var(--gold);text-shadow:0 5px 22px #f5bd3560}
@@ -45,7 +45,7 @@ h1 span{color:var(--gold);text-shadow:0 5px 22px #f5bd3560}
 .tag{font-size:11px;color:var(--gold);border:1px solid #8b7041;padding:5px 9px;border-radius:20px}
 .feature-card h2{font-size:29px;margin-bottom:8px}
 .feature-card p{font-size:14px;margin:0 0 18px}
-.feature-visual{height:190px;border-radius:12px;background:linear-gradient(#02050a33,#02050a66),url("assets/beatriddims-hero.svg") center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;border:1px solid #4d79c9;box-shadow:inset 0 0 30px #0009,0 0 20px #087cff30}
+.feature-visual{height:250px;border-radius:12px;background:linear-gradient(#02050a33,#02050a66),url("assets/beatriddims-hero.svg") center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;border:1px solid #4d79c9;box-shadow:inset 0 0 30px #0009,0 0 20px #087cff30}
 .feature-visual strong{font-size:27px;letter-spacing:2px}
 .feature-visual span{display:block;color:#f0d69a;font-size:12px;letter-spacing:4px}
 section{padding:75px 0}
@@ -118,7 +118,7 @@ section{padding:75px 0}
 footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:13px}
 .footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
 @media(max-width:800px){
- .hero-presenter{width:115px;height:157px;opacity:.28;left:0}.hero-grid{grid-template-columns:1fr}
+ .hero-presenter{display:none}.hero-grid{grid-template-columns:1fr}
  .studio-grid{grid-template-columns:repeat(2,1fr)}
  .phone-grid{grid-template-columns:repeat(2,1fr);row-gap:28px}
  .portfolio-item{flex-basis:260px}
@@ -151,7 +151,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
 
 <main>
 <section class="hero">
- <img class="hero-presenter" src="assets/presenter.svg" alt="ADLOGOS creative presenter"><div class="container hero-grid">
+ <div class="container hero-grid">
   <div>
    <div class="eyebrow">CREATE. DESIGN. ADVERTISE. GROW.</div>
    <h1>Ads, logos and flyers <span>that sell</span> — in minutes.</h1>
