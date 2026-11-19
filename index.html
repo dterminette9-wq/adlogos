@@ -26,7 +26,7 @@ header{border-bottom:1px solid #b88622;background:#030407f5;position:sticky;top:
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{font-size:27px;font-weight:900;letter-spacing:2px;text-shadow:0 0 16px #f5bd3540}
 .logo span{color:var(--gold)}
-nav{display:flex;gap:25px;color:#d0d0d0;font-size:14px}
+nav{display:flex;gap:25px;color:#d0d0d0;font-size:14px}.menu-toggle{display:none;border:1px solid #8b7041;border-radius:9px;background:#11131a;color:var(--gold);padding:9px 12px;font-size:20px;cursor:pointer}
 nav a:hover{color:var(--gold)}
 .btn{display:inline-block;padding:12px 21px;border-radius:28px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#101014;font-weight:800;font-size:14px;box-shadow:0 0 0 rgba(217,183,110,0);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 0 24px var(--gold-glow)}
@@ -122,7 +122,8 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  .studio-grid{grid-template-columns:repeat(2,1fr)}
  .phone-grid{grid-template-columns:repeat(2,1fr);row-gap:28px}
  .portfolio-item{flex-basis:260px}
- nav{display:none}
+ nav{display:none;position:absolute;top:76px;left:4%;right:4%;padding:18px;background:#0c0e14;border:1px solid #8b7041;border-radius:12px;box-shadow:0 18px 35px #000c;flex-direction:column;gap:15px}
+ nav.open{display:flex}.menu-toggle{display:block}.nav-cta{margin-left:auto}
 }
 @media(max-width:500px){
  .studio-grid,.steps,.pricing-grid{grid-template-columns:1fr}
@@ -138,14 +139,15 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
 <header>
  <div class="container nav">
   <a class="logo" href="#">▲ AD<span>LOGOS</span></a>
-  <nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation">☰</button>
+  <nav id="mainNav">
    <a href="#studios">Creative Studios</a><a href="studio.html">Open Workspace</a>
    <a href="#ads">Ad Showcase</a>
    <a href="#portfolio">Portfolio</a>
    <a href="#pricing">Pricing</a>
    <a href="#contact">Contact</a>
   </nav>
-  <a class="btn" href="#contact">Get Started</a>
+  <a class="btn nav-cta" href="#contact">Get Started</a>
  </div>
 </header>
 
@@ -287,6 +289,22 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
 </footer>
 <script>
 (function(){
+ const menuButton=document.querySelector('.menu-toggle');
+ const mainNav=document.getElementById('mainNav');
+ menuButton.addEventListener('click',function(){
+  const isOpen=mainNav.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded',String(isOpen));
+  menuButton.setAttribute('aria-label',isOpen?'Close navigation':'Open navigation');
+  menuButton.textContent=isOpen?'✕':'☰';
+ });
+ mainNav.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click',function(){
+   mainNav.classList.remove('open');
+   menuButton.setAttribute('aria-expanded','false');
+   menuButton.setAttribute('aria-label','Open navigation');
+   menuButton.textContent='☰';
+  });
+ });
  const modal=document.getElementById('projectModal');
  const service=document.getElementById('projectService');
  const form=document.getElementById('projectForm');
