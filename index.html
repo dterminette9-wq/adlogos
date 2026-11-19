@@ -139,6 +139,14 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  .phone-screen h3{font-size:20px}
  .contact{padding:28px 18px}
 }
+
+.frontpage-gallery{padding:34px 0 12px;background:#05060a}
+.frontpage-gallery-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}
+.frontpage-gallery figure{margin:0;position:relative;overflow:hidden;border:1px solid #9a742c;border-radius:15px;background:#11131a;box-shadow:0 12px 34px #0009}
+.frontpage-gallery img{display:block;width:100%;height:270px;object-fit:cover}
+.frontpage-gallery figcaption{padding:13px 16px;color:#f5bd35;font-weight:800;letter-spacing:.7px}
+@media(max-width:650px){.frontpage-gallery-grid{grid-template-columns:1fr}.frontpage-gallery img{height:220px}}
+
 </style>
 </head>
 <body>
@@ -178,6 +186,13 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
    <p style="margin-top:17px">Discover creative tools and services from the ADLOGOS family.</p>
    <a class="btn" href="https://beatriddims.com" target="_blank" rel="noopener">Explore BeatRiddims</a>
   </div>
+ </div>
+</section>
+
+<section class="frontpage-gallery" aria-label="ADLOGOS advertising examples">
+ <div class="container frontpage-gallery-grid">
+  <figure><img src="assets/presenter.jpg" alt="Realistic ADLOGOS advertising studio campaign artwork"><figcaption>Professional Creative Campaigns</figcaption></figure>
+  <figure><img src="assets/campaigns.jpg" alt="Four sample advertising campaign designs"><figcaption>Ads for Brands, Products and Events</figcaption></figure>
  </div>
 </section>
 
