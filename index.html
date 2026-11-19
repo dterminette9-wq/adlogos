@@ -33,7 +33,7 @@ nav a:hover{color:var(--gold)}
 .btn.blue{background:var(--blue);color:white}
 .hero{padding:64px 0 60px;background:radial-gradient(ellipse at 82% 18%,#073b79 0,transparent 38%),radial-gradient(ellipse at 15% 50%,#5a3407 0,transparent 42%),#030407;position:relative;overflow:hidden}
 .hero:after{content:"";display:block;height:1px;width:100%;position:absolute;bottom:0;left:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 18px var(--gold)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;position:relative;z-index:1}.hero-presenter{position:absolute;left:max(0px,calc((100vw - 1160px)/2 - 25px));bottom:0;width:180px;height:245px;object-fit:cover;object-position:top;border-radius:100px 100px 0 0;opacity:.94;filter:drop-shadow(0 0 22px #f5bd3560);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
 .eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase}
 h1{font-size:clamp(42px,6vw,69px);line-height:1.06;margin:18px 0}
 h1 span{color:var(--gold);text-shadow:0 5px 22px #f5bd3560}
@@ -67,10 +67,10 @@ section{padding:75px 0}
 .phone-screen h3{font-size:25px;line-height:1.1;text-transform:uppercase}
 .phone-screen p{font-size:11px;color:#fff}
 .phone-screen .ad-foot{font-size:10px;border-top:1px solid #ffffff66;padding-top:9px}
-.summer{background:linear-gradient(160deg,#e77c37,#642c50 65%,#1a1533)}
-.coffee{background:linear-gradient(150deg,#b87b46,#39241b 65%,#16110f)}
-.beatriddims{background:radial-gradient(circle at 75% 25%,#1b83ff 0,transparent 32%),linear-gradient(160deg,#111d3a,#05070d 65%,#1a1230);border:1px solid #377dff}
-.stride{background:linear-gradient(145deg,#276a8b,#111e32 65%,#090d16)}
+.summer{background-image:linear-gradient(#05070a22,#05070a66),url('assets/campaigns.jpg');background-size:100% 100%,400% 100%;background-position:center,0% center}
+.coffee{background-image:linear-gradient(#05070a22,#05070a66),url('assets/campaigns.jpg');background-size:100% 100%,400% 100%;background-position:center,33.333% center}
+.beatriddims{background-image:linear-gradient(#05070a22,#05070a66),url('assets/campaigns.jpg');background-size:100% 100%,400% 100%;background-position:center,66.666% center;border:1px solid #377dff}
+.stride{background-image:linear-gradient(#05070a22,#05070a66),url('assets/campaigns.jpg');background-size:100% 100%,400% 100%;background-position:center,100% center}
 .phone-caption{margin-top:13px;color:var(--muted);font-size:13px}
 .portfolio-grid{display:flex;gap:17px;overflow-x:auto;padding:8px 3px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) #24252b}
 .portfolio-grid::-webkit-scrollbar{height:7px}
@@ -78,10 +78,10 @@ section{padding:75px 0}
 .portfolio-grid::-webkit-scrollbar-thumb{background:var(--gold);border-radius:8px}
 .portfolio-item{height:180px;flex:0 0 calc(25% - 13px);min-width:235px;border-radius:12px;padding:18px;display:flex;align-items:end;font-weight:900;letter-spacing:2px;font-size:18px;border:1px solid #d09a2c;scroll-snap-align:start;transition:transform .2s,box-shadow .2s,border-color .2s;box-shadow:inset 0 -90px 70px #0009,0 8px 25px #0008}
 .portfolio-item:hover{transform:translateY(-4px);border-color:var(--gold-bright);box-shadow:0 10px 28px var(--gold-glow)}
-.p1{background:radial-gradient(circle at 70% 35%,#62b9ff,#163d79 40%,#050b19 85%)}
-.p2{background:radial-gradient(ellipse at 55% 40%,#e6b26a,#70401d 38%,#130c08 80%)}
-.p3{background:radial-gradient(circle at 70% 25%,#44b8ff,#0762a5 40%,#f5a52b 95%)}
-.p4{background:radial-gradient(circle at 75% 25%,#f2c56a,#754414 35%,#090909 80%)}
+.p1{background-image:url('assets/campaigns.jpg');background-size:400% 100%;background-position:0% center}
+.p2{background-image:url('assets/campaigns.jpg');background-size:400% 100%;background-position:33.333% center}
+.p3{background-image:url('assets/campaigns.jpg');background-size:400% 100%;background-position:66.666% center}
+.p4{background-image:url('assets/campaigns.jpg');background-size:400% 100%;background-position:100% center}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .step{padding:24px;border:1px solid #77571c;border-radius:14px;background:linear-gradient(145deg,#19170f,#090b11);box-shadow:0 0 20px #f5bd3515}
 .step b{color:var(--gold);font-size:13px;letter-spacing:2px}
@@ -93,7 +93,7 @@ section{padding:75px 0}
 footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:13px}
 .footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
 @media(max-width:800px){
- .hero-grid{grid-template-columns:1fr}
+ .hero-presenter{width:115px;height:157px;opacity:.28;left:0}.hero-grid{grid-template-columns:1fr}
  .studio-grid{grid-template-columns:repeat(2,1fr)}
  .phone-grid{grid-template-columns:repeat(2,1fr);row-gap:28px}
  .portfolio-item{flex-basis:260px}
@@ -125,7 +125,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
 
 <main>
 <section class="hero">
- <div class="container hero-grid">
+ <img class="hero-presenter" src="assets/presenter.jpg" alt="ADLOGOS creative presenter"><div class="container hero-grid">
   <div>
    <div class="eyebrow">CREATE. DESIGN. ADVERTISE. GROW.</div>
    <h1>Ads, logos and flyers <span>that sell</span> — in minutes.</h1>
