@@ -11,6 +11,8 @@
   --bg:#08090d;
   --panel:#11131a;
   --gold:#d9b76e;
+  --gold-bright:#ffe4a1;
+  --gold-glow:rgba(217,183,110,.24);
   --blue:#347cff;
   --white:#f7f5ef;
   --muted:#a4a5ad;
@@ -26,9 +28,11 @@ header{border-bottom:1px solid #24252b;background:#08090df2;position:sticky;top:
 .logo span{color:var(--gold)}
 nav{display:flex;gap:25px;color:#d0d0d0;font-size:14px}
 nav a:hover{color:var(--gold)}
-.btn{display:inline-block;padding:12px 21px;border-radius:7px;background:var(--gold);color:#101014;font-weight:800;font-size:14px}
+.btn{display:inline-block;padding:12px 21px;border-radius:7px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#101014;font-weight:800;font-size:14px;box-shadow:0 0 0 rgba(217,183,110,0);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 24px var(--gold-glow)}
 .btn.blue{background:var(--blue);color:white}
-.hero{padding:86px 0 75px;background:radial-gradient(ellipse at 75% 20%,#17264a 0,transparent 38%),radial-gradient(ellipse at 20% 50%,#302416 0,transparent 35%)}
+.hero{padding:86px 0 75px;background:radial-gradient(ellipse at 75% 20%,#17264a 0,transparent 38%),radial-gradient(ellipse at 20% 50%,#302416 0,transparent 35%);position:relative;overflow:hidden}
+.hero:after{content:"";display:block;height:1px;width:100%;position:absolute;bottom:0;left:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 18px var(--gold)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
 .eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase}
 h1{font-size:clamp(42px,6vw,69px);line-height:1.06;margin:18px 0}
@@ -36,7 +40,7 @@ h1 span{color:var(--gold)}
 .hero p{color:var(--muted);font-size:17px;max-width:540px;margin-bottom:27px}
 .hero-actions{display:flex;gap:13px;flex-wrap:wrap}
 .hero-note{font-size:12px!important;margin-top:17px}
-.feature-card{background:linear-gradient(145deg,#191d29,#101116);border:1px solid #34333a;border-radius:18px;padding:25px;box-shadow:0 25px 70px #0008}
+.feature-card{background:linear-gradient(145deg,#191d29,#101116);border:1px solid #6d5934;border-radius:18px;padding:25px;box-shadow:0 25px 70px #0008,0 0 28px rgba(217,183,110,.08)}
 .feature-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 .tag{font-size:11px;color:var(--gold);border:1px solid #8b7041;padding:5px 9px;border-radius:20px}
 .feature-card h2{font-size:29px;margin-bottom:8px}
@@ -50,7 +54,7 @@ section{padding:75px 0}
 .section-heading p{color:var(--muted);max-width:620px;margin:auto}
 .studio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
 .studio{background:var(--panel);border:1px solid #272a32;border-radius:13px;padding:24px;transition:.2s}
-.studio:hover{border-color:var(--gold);transform:translateY(-3px)}
+.studio:hover{border-color:var(--gold-bright);transform:translateY(-3px);box-shadow:0 8px 28px var(--gold-glow)}
 .studio .symbol{font-size:27px;color:var(--gold)}
 .studio h3{margin:10px 0 5px}
 .studio p{color:var(--muted);font-size:14px}
@@ -68,8 +72,12 @@ section{padding:75px 0}
 .xplosion{background:linear-gradient(160deg,#a51c2a,#1b1019 65%,#050505)}
 .stride{background:linear-gradient(145deg,#276a8b,#111e32 65%,#090d16)}
 .phone-caption{margin-top:13px;color:var(--muted);font-size:13px}
-.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.portfolio-item{height:180px;border-radius:12px;padding:18px;display:flex;align-items:end;font-weight:900;letter-spacing:2px;font-size:18px;border:1px solid #34343a}
+.portfolio-grid{display:flex;gap:17px;overflow-x:auto;padding:8px 3px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) #24252b}
+.portfolio-grid::-webkit-scrollbar{height:7px}
+.portfolio-grid::-webkit-scrollbar-track{background:#24252b;border-radius:8px}
+.portfolio-grid::-webkit-scrollbar-thumb{background:var(--gold);border-radius:8px}
+.portfolio-item{height:180px;flex:0 0 calc(25% - 13px);min-width:235px;border-radius:12px;padding:18px;display:flex;align-items:end;font-weight:900;letter-spacing:2px;font-size:18px;border:1px solid #51452f;scroll-snap-align:start;transition:transform .2s,box-shadow .2s,border-color .2s}
+.portfolio-item:hover{transform:translateY(-4px);border-color:var(--gold-bright);box-shadow:0 10px 28px var(--gold-glow)}
 .p1{background:linear-gradient(140deg,#1b5d78,#10121d)}
 .p2{background:linear-gradient(140deg,#97603c,#211611)}
 .p3{background:linear-gradient(140deg,#a74755,#291b38)}
@@ -88,7 +96,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  .hero-grid{grid-template-columns:1fr}
  .studio-grid{grid-template-columns:repeat(2,1fr)}
  .phone-grid{grid-template-columns:repeat(2,1fr);row-gap:28px}
- .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+ .portfolio-item{flex-basis:260px}
  nav{display:none}
 }
 @media(max-width:500px){
@@ -209,8 +217,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
    <div class="eyebrow">Let's create something</div>
    <h2>Your Next Big Idea Starts Here.</h2>
    <p>Have a business, product or project to promote? Talk to ADLOGOS.</p>
-   <a class="btn" href="https://wa.me/" target="_blank" rel="noopener">Contact Us on WhatsApp</a>
-   <p style="font-size:11px;margin:14px 0 0">WhatsApp contact link to be updated with your business number.</p>
+   <a class="btn" href="https://wa.me/17215593197?text=Hi%20ADLOGOS%2C%20I%27d%20like%20to%20discuss%20a%20creative%20project." target="_blank" rel="noopener">Contact Us on WhatsApp</a>
   </div>
  </div>
 </section>
