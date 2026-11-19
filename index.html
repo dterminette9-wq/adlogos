@@ -10,50 +10,50 @@
 :root {
   --bg:#08090d;
   --panel:#11131a;
-  --gold:#d9b76e;
-  --gold-bright:#ffe4a1;
+  --gold:#f5bd35;
+  --gold-bright:#fff0a8;
   --gold-glow:rgba(217,183,110,.24);
-  --blue:#347cff;
+  --blue:#087cff;
   --white:#f7f5ef;
   --muted:#a4a5ad;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+body{background:#030407;color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
 a{text-decoration:none;color:inherit}
 .container{width:min(1160px,92%);margin:auto}
-header{border-bottom:1px solid #24252b;background:#08090df2;position:sticky;top:0;z-index:10}
+header{border-bottom:1px solid #b88622;background:#030407f5;position:sticky;top:0;z-index:10;box-shadow:0 4px 22px #f5bd3520}
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+.logo{font-size:27px;font-weight:900;letter-spacing:2px;text-shadow:0 0 16px #f5bd3540}
 .logo span{color:var(--gold)}
 nav{display:flex;gap:25px;color:#d0d0d0;font-size:14px}
 nav a:hover{color:var(--gold)}
-.btn{display:inline-block;padding:12px 21px;border-radius:7px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#101014;font-weight:800;font-size:14px;box-shadow:0 0 0 rgba(217,183,110,0);transition:transform .2s,box-shadow .2s}
+.btn{display:inline-block;padding:12px 21px;border-radius:28px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#101014;font-weight:800;font-size:14px;box-shadow:0 0 0 rgba(217,183,110,0);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 0 24px var(--gold-glow)}
 .btn.blue{background:var(--blue);color:white}
-.hero{padding:86px 0 75px;background:radial-gradient(ellipse at 75% 20%,#17264a 0,transparent 38%),radial-gradient(ellipse at 20% 50%,#302416 0,transparent 35%);position:relative;overflow:hidden}
+.hero{padding:64px 0 60px;background:radial-gradient(ellipse at 82% 18%,#073b79 0,transparent 38%),radial-gradient(ellipse at 15% 50%,#5a3407 0,transparent 42%),#030407;position:relative;overflow:hidden}
 .hero:after{content:"";display:block;height:1px;width:100%;position:absolute;bottom:0;left:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 18px var(--gold)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
 .eyebrow{color:var(--gold);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase}
 h1{font-size:clamp(42px,6vw,69px);line-height:1.06;margin:18px 0}
-h1 span{color:var(--gold)}
+h1 span{color:var(--gold);text-shadow:0 5px 22px #f5bd3560}
 .hero p{color:var(--muted);font-size:17px;max-width:540px;margin-bottom:27px}
 .hero-actions{display:flex;gap:13px;flex-wrap:wrap}
 .hero-note{font-size:12px!important;margin-top:17px}
-.feature-card{background:linear-gradient(145deg,#191d29,#101116);border:1px solid #6d5934;border-radius:18px;padding:25px;box-shadow:0 25px 70px #0008,0 0 28px rgba(217,183,110,.08)}
+.feature-card{background:linear-gradient(145deg,#171a25,#07080c 65%,#10264b);border:1px solid #d9a52c;border-radius:18px;padding:25px;box-shadow:0 25px 70px #000b,0 0 30px #f5bd3530}
 .feature-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 .tag{font-size:11px;color:var(--gold);border:1px solid #8b7041;padding:5px 9px;border-radius:20px}
 .feature-card h2{font-size:29px;margin-bottom:8px}
 .feature-card p{font-size:14px;margin:0 0 18px}
-.feature-visual{height:190px;border-radius:12px;background:linear-gradient(130deg,#152b55,#182033 48%,#5b4324);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+.feature-visual{height:190px;border-radius:12px;background:radial-gradient(circle at 75% 25%,#0a79ff 0,transparent 32%),linear-gradient(130deg,#080d19,#111e39 48%,#6b470b);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;border:1px solid #4d79c9;box-shadow:inset 0 0 30px #0009,0 0 20px #087cff30}
 .feature-visual strong{font-size:27px;letter-spacing:2px}
 .feature-visual span{display:block;color:#f0d69a;font-size:12px;letter-spacing:4px}
 section{padding:75px 0}
 .section-heading{text-align:center;margin-bottom:38px}
-.section-heading h2{font-size:clamp(29px,4vw,40px);margin:8px 0}
+.section-heading h2{font-size:clamp(29px,4vw,40px);margin:8px 0;text-shadow:0 0 18px #f5bd3520}
 .section-heading p{color:var(--muted);max-width:620px;margin:auto}
 .studio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.studio{background:var(--panel);border:1px solid #272a32;border-radius:13px;padding:24px;transition:.2s}
+.studio{background:linear-gradient(145deg,#171820,#08090d);border:1px solid #59451e;border-radius:13px;padding:24px;transition:.2s;box-shadow:inset 0 0 18px #f5bd3508}
 .studio:hover{border-color:var(--gold-bright);transform:translateY(-3px);box-shadow:0 8px 28px var(--gold-glow)}
 .studio .symbol{font-size:27px;color:var(--gold)}
 .studio h3{margin:10px 0 5px}
@@ -69,25 +69,25 @@ section{padding:75px 0}
 .phone-screen .ad-foot{font-size:10px;border-top:1px solid #ffffff66;padding-top:9px}
 .summer{background:linear-gradient(160deg,#e77c37,#642c50 65%,#1a1533)}
 .coffee{background:linear-gradient(150deg,#b87b46,#39241b 65%,#16110f)}
-.xplosion{background:linear-gradient(160deg,#a51c2a,#1b1019 65%,#050505)}
+.beatriddims{background:radial-gradient(circle at 75% 25%,#1b83ff 0,transparent 32%),linear-gradient(160deg,#111d3a,#05070d 65%,#1a1230);border:1px solid #377dff}
 .stride{background:linear-gradient(145deg,#276a8b,#111e32 65%,#090d16)}
 .phone-caption{margin-top:13px;color:var(--muted);font-size:13px}
 .portfolio-grid{display:flex;gap:17px;overflow-x:auto;padding:8px 3px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) #24252b}
 .portfolio-grid::-webkit-scrollbar{height:7px}
 .portfolio-grid::-webkit-scrollbar-track{background:#24252b;border-radius:8px}
 .portfolio-grid::-webkit-scrollbar-thumb{background:var(--gold);border-radius:8px}
-.portfolio-item{height:180px;flex:0 0 calc(25% - 13px);min-width:235px;border-radius:12px;padding:18px;display:flex;align-items:end;font-weight:900;letter-spacing:2px;font-size:18px;border:1px solid #51452f;scroll-snap-align:start;transition:transform .2s,box-shadow .2s,border-color .2s}
+.portfolio-item{height:180px;flex:0 0 calc(25% - 13px);min-width:235px;border-radius:12px;padding:18px;display:flex;align-items:end;font-weight:900;letter-spacing:2px;font-size:18px;border:1px solid #d09a2c;scroll-snap-align:start;transition:transform .2s,box-shadow .2s,border-color .2s;box-shadow:inset 0 -90px 70px #0009,0 8px 25px #0008}
 .portfolio-item:hover{transform:translateY(-4px);border-color:var(--gold-bright);box-shadow:0 10px 28px var(--gold-glow)}
-.p1{background:linear-gradient(140deg,#1b5d78,#10121d)}
-.p2{background:linear-gradient(140deg,#97603c,#211611)}
-.p3{background:linear-gradient(140deg,#a74755,#291b38)}
-.p4{background:linear-gradient(140deg,#72602d,#171713)}
+.p1{background:radial-gradient(circle at 70% 35%,#62b9ff,#163d79 40%,#050b19 85%)}
+.p2{background:radial-gradient(ellipse at 55% 40%,#e6b26a,#70401d 38%,#130c08 80%)}
+.p3{background:radial-gradient(circle at 70% 25%,#44b8ff,#0762a5 40%,#f5a52b 95%)}
+.p4{background:radial-gradient(circle at 75% 25%,#f2c56a,#754414 35%,#090909 80%)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.step{padding:24px;border-left:2px solid var(--gold);background:#11131a}
+.step{padding:24px;border:1px solid #77571c;border-radius:14px;background:linear-gradient(145deg,#19170f,#090b11);box-shadow:0 0 20px #f5bd3515}
 .step b{color:var(--gold);font-size:13px;letter-spacing:2px}
 .step h3{margin:8px 0}
 .step p{color:var(--muted);font-size:14px}
-.contact{background:linear-gradient(110deg,#19170f,#111827);border:1px solid #55472c;border-radius:17px;padding:42px;text-align:center}
+.contact{background:radial-gradient(ellipse at 80% 20%,#123e72,#0a101b 48%,#171008);border:1px solid #e5b33d;border-radius:17px;padding:42px;text-align:center;box-shadow:0 0 28px #f5bd3520}
 .contact h2{font-size:35px;margin:8px 0}
 .contact p{color:var(--muted);margin-bottom:20px}
 footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:13px}
@@ -112,7 +112,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
 <body>
 <header>
  <div class="container nav">
-  <a class="logo" href="#">AD<span>LOGOS</span></a>
+  <a class="logo" href="#">▲ AD<span>LOGOS</span></a>
   <nav>
    <a href="#studios">AI Studios</a>
    <a href="#ads">Ad Showcase</a>
@@ -127,14 +127,14 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
 <section class="hero">
  <div class="container hero-grid">
   <div>
-   <div class="eyebrow">Your business. Our creative power.</div>
-   <h1>Make Your Brand <span>Impossible</span> To Ignore.</h1>
-   <p>AI-powered advertising, branding and creative services that help businesses stand out, attract customers and grow.</p>
+   <div class="eyebrow">CREATE. DESIGN. ADVERTISE. GROW.</div>
+   <h1>Ads, logos and flyers <span>that sell</span> — in minutes.</h1>
+   <p>Professional-looking ads, logos and flyers for businesses that want to stand out, attract customers and grow.</p>
    <div class="hero-actions">
-    <a class="btn" href="#studios">Explore AI Studios</a>
-    <a class="btn blue" href="#contact">Work With Us</a>
+    <a class="btn" href="#studios">Start Creating Now</a>
+    <a class="btn blue" href="#contact">View Our Services</a>
    </div>
-   <p class="hero-note">Creative ideas. Professional designs. One creative studio.</p>
+   <p class="hero-note">Create. Design. Advertise. Grow.</p>
   </div>
   <div class="feature-card">
    <div class="feature-top"><span class="eyebrow">Featured AI product</span><span class="tag">POWERED BY AI</span></div>
@@ -151,8 +151,8 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  <div class="container">
   <div class="section-heading">
    <div class="eyebrow">The creative studio</div>
-   <h2>Everything Your Brand Needs</h2>
-   <p>Explore our creative studio services. Choose a service and bring your next idea to life.</p>
+   <h2>Six Creative Studios. One Place.</h2>
+   <p>Choose the tools you need to build your brand and promote your business.</p>
   </div>
   <div class="studio-grid">
    <article class="studio"><div class="symbol">✦</div><h3>AI Logo Studio</h3><p>Create memorable logo concepts for your business, brand or project.</p></article>
@@ -169,8 +169,8 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  <div class="container">
   <div class="section-heading">
    <div class="eyebrow">Made to get attention</div>
-   <h2>Imagine Your Brand Here</h2>
-   <p>Creative advertising concepts displayed across mobile screens.</p>
+   <h2>Ads That Make People Look Twice</h2>
+   <p>A look at the campaigns and creative work ADLOGOS can help you create.</p>
   </div>
   <div class="phone-grid">
    <div class="phone-wrap"><div class="phone"><div class="phone-screen summer"><span class="ad-label">SUMMER COLLECTION</span><h3>Summer<br>Vibes</h3><p>Bring the heat. Make every moment count.</p><div class="ad-foot">NEW SEASON • NEW STYLE</div></div></div><div class="phone-caption">Summer Vibes Campaign</div></div>
@@ -185,8 +185,8 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  <div class="container">
   <div class="section-heading">
    <div class="eyebrow">Creative inspiration</div>
-   <h2>Ideas Into Identity</h2>
-   <p>A showcase of sample brand directions and advertising concepts.</p>
+   <h2>Our Portfolio</h2>
+   <p>Stunning campaign concepts. Bold creative directions.</p>
   </div>
   <div class="portfolio-grid">
    <div class="portfolio-item p1">STRIDE</div>
@@ -201,12 +201,12 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  <div class="container">
   <div class="section-heading">
    <div class="eyebrow">Simple process</div>
-   <h2>From Idea To Advertisement</h2>
+   <h2>How It Works</h2>
   </div>
   <div class="steps">
-   <div class="step"><b>01 / CHOOSE</b><h3>Choose Your Service</h3><p>Select the creative service that fits your business idea.</p></div>
-   <div class="step"><b>02 / CREATE</b><h3>Build Your Concept</h3><p>Work with ADLOGOS to develop your creative direction.</p></div>
-   <div class="step"><b>03 / LAUNCH</b><h3>Show The World</h3><p>Get your brand and advertising ready to make an impression.</p></div>
+   <div class="step"><b>01 / CHOOSE</b><h3>Choose Your Service</h3><p>Pick from our AI-powered design tools.</p></div>
+   <div class="step"><b>02 / CREATE</b><h3>Build Your Concept</h3><p>Generate logos, ads and more with AI.</p></div>
+   <div class="step"><b>03 / LAUNCH</b><h3>Show The World</h3><p>Download your designs and start promoting.</p></div>
   </div>
  </div>
 </section>
@@ -215,9 +215,9 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  <div class="container">
   <div class="contact">
    <div class="eyebrow">Let's create something</div>
-   <h2>Your Next Big Idea Starts Here.</h2>
-   <p>Have a business, product or project to promote? Talk to ADLOGOS.</p>
-   <a class="btn" href="https://wa.me/17215593197?text=Hi%20ADLOGOS%2C%20I%27d%20like%20to%20discuss%20a%20creative%20project." target="_blank" rel="noopener">Contact Us on WhatsApp</a>
+   <h2>Chat with Us on WhatsApp</h2>
+   <p>Get instant support and start your project today!</p>
+   <a class="btn" href="https://wa.me/17215593197?text=Hi%20ADLOGOS%2C%20I%27d%20like%20to%20discuss%20a%20creative%20project." target="_blank" rel="noopener">Chat Now</a>
   </div>
  </div>
 </section>
