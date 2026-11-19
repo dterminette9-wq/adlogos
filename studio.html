@@ -37,15 +37,85 @@ function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&l
 function renderTool(key){active=key;const t=tools[key];document.querySelectorAll(".tool").forEach(b=>b.classList.toggle("active",b.dataset.tool===key));document.getElementById("toolEyebrow").textContent=t.eyebrow;document.getElementById("toolTitle").textContent=t.title;document.getElementById("toolSub").textContent=t.sub;document.getElementById("makeBtn").textContent=t.button;fields.innerHTML=t.fields.map(f=>{const [id,label,type,placeholder]=f;let el=type==="textarea"?'<textarea id="'+id+'" placeholder="'+esc(placeholder)+'"></textarea>':type==="select"?'<select id="'+id+'">'+(Array.isArray(placeholder[0])?placeholder.map(o=>'<option value="'+esc(o[1])+'">'+esc(o[0])+'</option>').join(""):placeholder.map(o=>'<option>'+esc(o)+'</option>').join(""))+'</select>':'<input id="'+id+'" type="text" placeholder="'+esc(placeholder)+'">';return '<div class="field '+(type==="textarea"?"full":"")+'"><label for="'+id+'">'+label+'</label>'+el+'</div>'}).join("");result.classList.remove("show");visual.classList.add("hidden");}
 document.querySelectorAll(".tool").forEach(b=>b.addEventListener("click",()=>renderTool(b.dataset.tool)));
 function val(id){return document.getElementById(id)?.value?.trim()||""}
-function makeCopy(){let b=val("business")||"Your brand",o=val("offer")||"Something worth discovering",a=val("audience")||"you",d=val("details"),tone=val("tone");return b+" — "+o+"!\n\n"+(tone.includes("Premium")?"Discover a better way to experience "+o.toLowerCase()+".":tone.includes("Friendly")?"Good things are waiting for you! "+b+" is here with "+o.toLowerCase()+".":tone.includes("Urgent")?"Don't miss out! "+o+" is happening now.": "Ready for something new? "+b+" brings you "+o.toLowerCase()+".")+"\n\n"+(d?d+"\n\n":"")+"Made for "+a+".\n\nFind out more today.\n\n#"+b.replace(/[^a-z0-9]/gi,"")+" #ShopLocal #DiscoverMore\n\nHEADLINE OPTIONS\n• "+o+" starts here.\n• Make your next move with "+b+".\n• Your next favourite is waiting.\n\nCALL TO ACTION\nDiscover more · Contact us · Get started";}
-function makeLogo(){let name=val("business")||"YOUR BRAND",tag=val("tagline"),symbol=val("symbol")||name.slice(0,1),style=val("style"),gold=style.includes("Luxury"),accent=gold?"#d8ad52":style.includes("Bold")?"#1687ff":style.includes("Friendly")?"#54d6b0":"#d6b46c";let svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600"><rect width="1000" height="600" rx="28" fill="#0a0b10"/><circle cx="500" cy="205" r="78" fill="none" stroke="'+accent+'" stroke-width="8"/><text x="500" y="232" text-anchor="middle" font-family="Arial" font-size="76" font-weight="bold" fill="'+accent+'">'+esc(symbol.slice(0,3))+'</text><text x="500" y="390" text-anchor="middle" font-family="Arial" font-size="58" font-weight="bold" letter-spacing="4" fill="#fff">'+esc(name.toUpperCase())+'</text><text x="500" y="440" text-anchor="middle" font-family="Arial" font-size="22" letter-spacing="5" fill="'+accent+'">'+esc(tag.toUpperCase())+'</text></svg>';return {text:"LOGO CONCEPT\nBrand: "+name+"\nDirection: "+style+"\nSymbol idea: "+symbol+"\n"+(tag?"Tagline: "+tag:"") ,svg};}
-function makeBrand(){let mood=val("mood"),sets={Luxury:["#111111","#D6B46C","#F4EFE5","#68615A","#FFFFFF"],"Fresh and natural":["#244C3B","#9CC7A5","#F3EBDD","#D5A66B","#FFFFFF"],"Bold and modern":["#101827","#1687FF","#F5BD35","#F7F5EF","#8A91A0"],"Warm and friendly":["#55352B","#E89A67","#F5D8B5","#8EAD87","#FFF9F0"]},colors=sets[mood],name=val("business")||"Your Brand";return {text:"BRAND STARTER KIT — "+name+"\nIndustry: "+(val("industry")||"Not specified")+"\nPersonality: "+mood+"\n\nCOLOR PALETTE\n"+colors.map((c,i)=>["Primary","Accent","Background","Secondary","Light"][i]+": "+c).join("\n")+"\n\nTYPOGRAPHY DIRECTION\nUse a confident sans-serif for headings and a highly readable sans-serif for body text.\n\nVOICE\nKeep messages consistent with the "+mood.toLowerCase()+" personality. Use short, memorable headlines and one clear call to action.",colors};}
-function makeSocial(){let brand=val("business")||"YOUR BRAND",head=val("headline")||"MAKE YOUR NEXT MOVE",offer=val("offer")||"Discover something new",cta=val("cta")||"LEARN MORE",color=val("color")||"#f5bd35";let svg='<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080"><defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#080b14"/><stop offset="1" stop-color="#172a45"/></linearGradient></defs><rect width="1080" height="1080" fill="url(#g)"/><circle cx="900" cy="160" r="330" fill="'+color+'" opacity=".16"/><path d="M0 820 Q450 650 1080 850 V1080 H0Z" fill="'+color+'" opacity=".13"/><text x="90" y="130" fill="'+color+'" font-family="Arial" font-size="32" font-weight="bold" letter-spacing="8">'+esc(brand.toUpperCase())+'</text><text x="90" y="450" fill="#fff" font-family="Arial" font-size="92" font-weight="bold">'+esc(head.slice(0,24))+'</text><foreignObject x="90" y="510" width="850" height="180"><div xmlns="http://www.w3.org/1999/xhtml" style="font:36px Arial;color:#ddd">'+esc(offer)+'</div></foreignObject><rect x="90" y="790" width="350" height="92" rx="46" fill="'+color+'"/><text x="265" y="850" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#111">'+esc(cta.toUpperCase())+'</text></svg>';return {text:"SOCIAL AD LAYOUT\nBrand: "+brand+"\nHeadline: "+head+"\nSupporting message: "+offer+"\nCTA: "+cta,svg};}
-function makeVideo(){let brand=val("business")||"the brand",offer=val("offer")||"our latest offer",duration=val("duration"),style=val("style"),details=val("details");return "VIDEO COMMERCIAL — "+brand+"\nLength: "+duration+" | Style: "+style+"\n\nOPENING (0–"+(duration==="15 seconds"?"3":duration==="30 seconds"?"5":"8")+" sec)\n[Visual: Strong opening shot that immediately shows the product or result.]\nVOICEOVER: “Looking for "+offer.toLowerCase()+"? Meet "+brand+".“\n\nBENEFIT (middle section)\n[Visual: Show the product, service or customer experience in action.]\nVOICEOVER: “Designed to make a difference. Made with you in mind.”\n\nCALL TO ACTION (final section)\n[Visual: Brand name and contact details on screen.]\nVOICEOVER: “Choose "+brand+". Get in touch today and discover more.”\n\nPRODUCTION NOTES\nMusic: Use a track that matches the "+style.toLowerCase()+" mood.\nOn-screen details: "+(details||"Add website, location, offer terms and contact details.")+"\nEnd card: Logo + one clear call to action.";}
-function makeRadio(){let b=val("business")||"our business",offer=val("offer")||"a special offer",duration=val("duration"),tone=val("tone"),contact=val("contact")||"Contact us today";let opening=tone==="High-energy"?"Hey, don't miss this!":tone==="Warm and friendly"?"Here's something good to share.":tone==="Confident and premium"?"Experience something exceptional.":"Ready for something exciting?";return "RADIO COMMERCIAL — "+b+"\nLength: "+duration+" | Delivery: "+tone+"\n\n[SFX: Short attention-grabbing opening]\nANNOUNCER: "+opening+" "+b+" brings you "+offer+".\n\nWhether you're discovering us for the first time or coming back for more, now is the perfect time to connect.\n\n"+contact+". That's "+b+" — remember the name!\n\n[SFX: Brand sting / music out]\n\nPRODUCTION: Read naturally, leave a short pause before the contact details, and keep the final brand name clear.";}
+function makeCopy(){let b=val("business")||"Your brand",o=val("offer")||"Something worth discovering",a=val("audience")||"you",d=val("details"),tone=val("tone");return b+" — "+o+"!
+
+"+(tone.includes("Premium")?"Discover a better way to experience "+o.toLowerCase()+".":tone.includes("Friendly")?"Good things are waiting for you! "+b+" is here with "+o.toLowerCase()+".":tone.includes("Urgent")?"Don't miss out! "+o+" is happening now.": "Ready for something new? "+b+" brings you "+o.toLowerCase()+".")+"
+
+"+(d?d+"
+
+":"")+"Made for "+a+".
+
+Find out more today.
+
+#"+b.replace(/[^a-z0-9]/gi,"")+" #ShopLocal #DiscoverMore
+
+HEADLINE OPTIONS
+• "+o+" starts here.
+• Make your next move with "+b+".
+• Your next favourite is waiting.
+
+CALL TO ACTION
+Discover more · Contact us · Get started";}
+function makeLogo(){let name=val("business")||"YOUR BRAND",tag=val("tagline"),symbol=val("symbol")||name.slice(0,1),style=val("style"),gold=style.includes("Luxury"),accent=gold?"#d8ad52":style.includes("Bold")?"#1687ff":style.includes("Friendly")?"#54d6b0":"#d6b46c";let svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600"><rect width="1000" height="600" rx="28" fill="#0a0b10"/><circle cx="500" cy="205" r="78" fill="none" stroke="'+accent+'" stroke-width="8"/><text x="500" y="232" text-anchor="middle" font-family="Arial" font-size="76" font-weight="bold" fill="'+accent+'">'+esc(symbol.slice(0,3))+'</text><text x="500" y="390" text-anchor="middle" font-family="Arial" font-size="58" font-weight="bold" letter-spacing="4" fill="#fff">'+esc(name.toUpperCase())+'</text><text x="500" y="440" text-anchor="middle" font-family="Arial" font-size="22" letter-spacing="5" fill="'+accent+'">'+esc(tag.toUpperCase())+'</text></svg>';return {text:"LOGO CONCEPT
+Brand: "+name+"
+Direction: "+style+"
+Symbol idea: "+symbol+"
+"+(tag?"Tagline: "+tag:"") ,svg};}
+function makeBrand(){let mood=val("mood"),sets={Luxury:["#111111","#D6B46C","#F4EFE5","#68615A","#FFFFFF"],"Fresh and natural":["#244C3B","#9CC7A5","#F3EBDD","#D5A66B","#FFFFFF"],"Bold and modern":["#101827","#1687FF","#F5BD35","#F7F5EF","#8A91A0"],"Warm and friendly":["#55352B","#E89A67","#F5D8B5","#8EAD87","#FFF9F0"]},colors=sets[mood],name=val("business")||"Your Brand";return {text:"BRAND STARTER KIT — "+name+"
+Industry: "+(val("industry")||"Not specified")+"
+Personality: "+mood+"
+
+COLOR PALETTE
+"+colors.map((c,i)=>["Primary","Accent","Background","Secondary","Light"][i]+": "+c).join("
+")+"
+
+TYPOGRAPHY DIRECTION
+Use a confident sans-serif for headings and a highly readable sans-serif for body text.
+
+VOICE
+Keep messages consistent with the "+mood.toLowerCase()+" personality. Use short, memorable headlines and one clear call to action.",colors};}
+function makeSocial(){let brand=val("business")||"YOUR BRAND",head=val("headline")||"MAKE YOUR NEXT MOVE",offer=val("offer")||"Discover something new",cta=val("cta")||"LEARN MORE",color=val("color")||"#f5bd35";let svg='<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080"><defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#080b14"/><stop offset="1" stop-color="#172a45"/></linearGradient></defs><rect width="1080" height="1080" fill="url(#g)"/><circle cx="900" cy="160" r="330" fill="'+color+'" opacity=".16"/><path d="M0 820 Q450 650 1080 850 V1080 H0Z" fill="'+color+'" opacity=".13"/><text x="90" y="130" fill="'+color+'" font-family="Arial" font-size="32" font-weight="bold" letter-spacing="8">'+esc(brand.toUpperCase())+'</text><text x="90" y="450" fill="#fff" font-family="Arial" font-size="92" font-weight="bold">'+esc(head.slice(0,24))+'</text><foreignObject x="90" y="510" width="850" height="180"><div xmlns="http://www.w3.org/1999/xhtml" style="font:36px Arial;color:#ddd">'+esc(offer)+'</div></foreignObject><rect x="90" y="790" width="350" height="92" rx="46" fill="'+color+'"/><text x="265" y="850" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#111">'+esc(cta.toUpperCase())+'</text></svg>';return {text:"SOCIAL AD LAYOUT
+Brand: "+brand+"
+Headline: "+head+"
+Supporting message: "+offer+"
+CTA: "+cta,svg};}
+function makeVideo(){let brand=val("business")||"the brand",offer=val("offer")||"our latest offer",duration=val("duration"),style=val("style"),details=val("details");return "VIDEO COMMERCIAL — "+brand+"
+Length: "+duration+" | Style: "+style+"
+
+OPENING (0–"+(duration==="15 seconds"?"3":duration==="30 seconds"?"5":"8")+" sec)
+[Visual: Strong opening shot that immediately shows the product or result.]
+VOICEOVER: “Looking for "+offer.toLowerCase()+"? Meet "+brand+".“
+
+BENEFIT (middle section)
+[Visual: Show the product, service or customer experience in action.]
+VOICEOVER: “Designed to make a difference. Made with you in mind.”
+
+CALL TO ACTION (final section)
+[Visual: Brand name and contact details on screen.]
+VOICEOVER: “Choose "+brand+". Get in touch today and discover more.”
+
+PRODUCTION NOTES
+Music: Use a track that matches the "+style.toLowerCase()+" mood.
+On-screen details: "+(details||"Add website, location, offer terms and contact details.")+"
+End card: Logo + one clear call to action.";}
+function makeRadio(){let b=val("business")||"our business",offer=val("offer")||"a special offer",duration=val("duration"),tone=val("tone"),contact=val("contact")||"Contact us today";let opening=tone==="High-energy"?"Hey, don't miss this!":tone==="Warm and friendly"?"Here's something good to share.":tone==="Confident and premium"?"Experience something exceptional.":"Ready for something exciting?";return "RADIO COMMERCIAL — "+b+"
+Length: "+duration+" | Delivery: "+tone+"
+
+[SFX: Short attention-grabbing opening]
+ANNOUNCER: "+opening+" "+b+" brings you "+offer+".
+
+Whether you're discovering us for the first time or coming back for more, now is the perfect time to connect.
+
+"+contact+". That's "+b+" — remember the name!
+
+[SFX: Brand sting / music out]
+
+PRODUCTION: Read naturally, leave a short pause before the contact details, and keep the final brand name clear.";}
 form.addEventListener("submit",e=>{e.preventDefault();let data;if(active==="copy")data={text:makeCopy()};if(active==="logo")data=makeLogo();if(active==="brand"){let x=makeBrand();data={text:x.text,colors:x.colors};}if(active==="social")data=makeSocial();if(active==="video")data={text:makeVideo()};if(active==="radio")data={text:makeRadio()};lastText=data.text||"";lastSvg=data.svg||"";document.getElementById("resultTitle").textContent=tools[active].title+" — your draft";output.textContent=lastText;visual.classList.toggle("hidden",!data.svg&&!data.colors);if(data.svg){visual.innerHTML=data.svg;}else if(data.colors){visual.innerHTML='<div class="swatches">'+data.colors.map((c,i)=>'<div class="swatch"><div class="chip" style="background:'+c+'"></div><small>'+["Primary","Accent","Background","Secondary","Light"][i]+' · '+c+'</small></div>').join("")+'</div>';}else visual.innerHTML="";result.classList.add("show");result.scrollIntoView({behavior:"smooth",block:"nearest"});});
 document.getElementById("copyBtn").addEventListener("click",async()=>{lastText=output.textContent;try{await navigator.clipboard.writeText(lastText);document.getElementById("copyBtn").textContent="Copied!";}catch(e){document.getElementById("copyBtn").textContent="Select text to copy";}});
-document.getElementById("saveBtn").addEventListener("click",()=>{try{localStorage.setItem("adlogos-draft-"+active,JSON.stringify({text:output.textContent,savedAt:new Date().toISOString()}));document.getElementById("saveBtn").textContent="Saved on this device";}catch(e){document.getElementById("saveBtn").textContent="Could not save";}});\ndocument.getElementById("loadBtn").addEventListener("click",()=>{try{const saved=JSON.parse(localStorage.getItem("adlogos-draft-"+active)||"null");if(!saved){document.getElementById("loadBtn").textContent="No saved draft";return;}lastText=saved.text||"";lastSvg="";output.textContent=lastText;visual.classList.add("hidden");result.classList.add("show");document.getElementById("resultTitle").textContent=tools[active].title+" — saved draft";}catch(e){document.getElementById("loadBtn").textContent="Could not load";}});\ndocument.getElementById("downloadBtn").addEventListener("click",()=>{lastText=output.textContent;let blob,url,name;if(lastSvg){blob=new Blob([lastSvg],{type:"image/svg+xml"});name=active==="logo"?"adlogos-logo-concept.svg":"adlogos-social-ad.svg";}else{blob=new Blob([lastText],{type:"text/plain;charset=utf-8"});name="adlogos-"+active+"-draft.txt";}url=URL.createObjectURL(blob);let a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);});
+document.getElementById("saveBtn").addEventListener("click",()=>{try{localStorage.setItem("adlogos-draft-"+active,JSON.stringify({text:output.textContent,savedAt:new Date().toISOString()}));document.getElementById("saveBtn").textContent="Saved on this device";}catch(e){document.getElementById("saveBtn").textContent="Could not save";}});
+document.getElementById("loadBtn").addEventListener("click",()=>{try{const saved=JSON.parse(localStorage.getItem("adlogos-draft-"+active)||"null");if(!saved){document.getElementById("loadBtn").textContent="No saved draft";return;}lastText=saved.text||"";lastSvg="";output.textContent=lastText;visual.classList.add("hidden");result.classList.add("show");document.getElementById("resultTitle").textContent=tools[active].title+" — saved draft";}catch(e){document.getElementById("loadBtn").textContent="Could not load";}});
+document.getElementById("downloadBtn").addEventListener("click",()=>{lastText=output.textContent;let blob,url,name;if(lastSvg){blob=new Blob([lastSvg],{type:"image/svg+xml"});name=active==="logo"?"adlogos-logo-concept.svg":"adlogos-social-ad.svg";}else{blob=new Blob([lastText],{type:"text/plain;charset=utf-8"});name="adlogos-"+active+"-draft.txt";}url=URL.createObjectURL(blob);let a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);});
 form.addEventListener("reset",()=>{result.classList.remove("show");});
 const requestedTool=new URLSearchParams(location.search).get("tool");
 renderTool(tools[requestedTool]?requestedTool:"copy");
