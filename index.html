@@ -54,6 +54,12 @@ section{padding:75px 0}
 .section-heading p{color:var(--muted);max-width:620px;margin:auto}
 .studio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
 .studio{appearance:none;text-align:left;width:100%;font:inherit;color:inherit;background:linear-gradient(145deg,#171820,#08090d);border:1px solid #59451e;border-radius:13px;padding:24px;transition:.2s;box-shadow:inset 0 0 18px #f5bd3508;cursor:pointer}
+.studio:before{content:"";display:block;height:112px;margin:-24px -24px 17px;border-radius:12px 12px 0 0;background-image:linear-gradient(0deg,#08090d55,#08090d08),url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,0% center;border-bottom:1px solid #8b7041}
+.studio:nth-child(2):before{background-position:center,100% center}
+.studio:nth-child(3):before{background-image:linear-gradient(0deg,#08090d55,#08090d08),url("assets/presenter.jpg");background-size:cover;background-position:center 28%}
+.studio:nth-child(4):before{background-position:center,33.333% center}
+.studio:nth-child(5):before{background-image:linear-gradient(0deg,#08090d55,#08090d08),url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,66.666% center}
+.studio:nth-child(6):before{background-position:center,100% center}
 .studio-action{display:inline-block;margin-top:16px;color:var(--gold);font-size:13px;font-weight:800}
 .studio:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
 .project-modal{position:fixed;inset:0;background:#000d;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}
