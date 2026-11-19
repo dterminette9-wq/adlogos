@@ -53,7 +53,22 @@ section{padding:75px 0}
 .section-heading h2{font-size:clamp(29px,4vw,40px);margin:8px 0;text-shadow:0 0 18px #f5bd3520}
 .section-heading p{color:var(--muted);max-width:620px;margin:auto}
 .studio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.studio{background:linear-gradient(145deg,#171820,#08090d);border:1px solid #59451e;border-radius:13px;padding:24px;transition:.2s;box-shadow:inset 0 0 18px #f5bd3508}
+.studio{appearance:none;text-align:left;width:100%;font:inherit;color:inherit;background:linear-gradient(145deg,#171820,#08090d);border:1px solid #59451e;border-radius:13px;padding:24px;transition:.2s;box-shadow:inset 0 0 18px #f5bd3508;cursor:pointer}
+.studio-action{display:inline-block;margin-top:16px;color:var(--gold);font-size:13px;font-weight:800}
+.studio:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+.project-modal{position:fixed;inset:0;background:#000d;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}
+.project-modal.open{display:flex}
+.project-panel{width:min(560px,100%);max-height:90vh;overflow:auto;background:#10131b;border:1px solid var(--gold);border-radius:18px;padding:28px;box-shadow:0 20px 80px #000}
+.project-panel h2{font-size:27px;margin-bottom:8px}
+.project-panel>p{color:var(--muted);margin-bottom:20px;font-size:14px}
+.project-form{display:grid;gap:13px}
+.project-form label{display:grid;gap:6px;color:#eee;font-size:13px;font-weight:700}
+.project-form input,.project-form textarea{width:100%;border:1px solid #55515a;border-radius:8px;padding:12px;background:#080a10;color:white;font:inherit}
+.project-form textarea{min-height:105px;resize:vertical}
+.project-form input:focus,.project-form textarea:focus{outline:2px solid #dcae3c;border-color:transparent}
+.modal-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:5px}
+.modal-close{border:1px solid #666;background:transparent;color:#fff;border-radius:24px;padding:11px 18px;cursor:pointer}
+.form-note{font-size:12px;color:var(--muted);margin-top:3px}
 .studio:hover{border-color:var(--gold-bright);transform:translateY(-3px);box-shadow:0 8px 28px var(--gold-glow)}
 .studio .symbol{font-size:27px;color:var(--gold)}
 .studio h3{margin:10px 0 5px}
@@ -155,12 +170,12 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
    <p>Choose the tools you need to build your brand and promote your business.</p>
   </div>
   <div class="studio-grid">
-   <article class="studio"><div class="symbol">✦</div><h3>AI Logo Studio</h3><p>Create memorable logo concepts for your business, brand or project.</p></article>
-   <article class="studio"><div class="symbol">▣</div><h3>Social Ad Studio</h3><p>Eye-catching advertising concepts for social media campaigns.</p></article>
-   <article class="studio"><div class="symbol">◇</div><h3>Brand Kit Creator</h3><p>Build a consistent look with colors, typography and brand direction.</p></article>
-   <article class="studio"><div class="symbol">✎</div><h3>Ad Copy Studio</h3><p>Creative headlines, captions and promotional messages for your business.</p></article>
-   <article class="studio"><div class="symbol">▶</div><h3>Video & Commercial Studio</h3><p>Develop promotional video ideas, scripts and commercial concepts.</p></article>
-   <article class="studio"><div class="symbol">♫</div><h3>Voice & Radio Ads</h3><p>Plan radio commercials, voiceovers and audio advertising.</p></article>
+   <button class="studio" type="button" data-service="AI Logo Studio"><span class="symbol">✦</span><h3>AI Logo Studio</h3><p>Create memorable logo concepts for your business, brand or project.</p><span class="studio-action">Start a logo project →</span></button>
+   <button class="studio" type="button" data-service="Social Ad Studio"><span class="symbol">▣</span><h3>Social Ad Studio</h3><p>Eye-catching advertising concepts for social media campaigns.</p><span class="studio-action">Start an ad project →</span></button>
+   <button class="studio" type="button" data-service="Brand Kit Creator"><span class="symbol">◇</span><h3>Brand Kit Creator</h3><p>Build a consistent look with colors, typography and brand direction.</p><span class="studio-action">Build my brand →</span></button>
+   <button class="studio" type="button" data-service="Ad Copy Studio"><span class="symbol">✎</span><h3>Ad Copy Studio</h3><p>Creative headlines, captions and promotional messages for your business.</p><span class="studio-action">Create ad copy →</span></button>
+   <button class="studio" type="button" data-service="Video & Commercial Studio"><span class="symbol">▶</span><h3>Video & Commercial Studio</h3><p>Develop promotional video ideas, scripts and commercial concepts.</p><span class="studio-action">Plan a video →</span></button>
+   <button class="studio" type="button" data-service="Voice & Radio Ads"><span class="symbol">♫</span><h3>Voice & Radio Ads</h3><p>Plan radio commercials, voiceovers and audio advertising.</p><span class="studio-action">Plan an audio ad →</span></button>
   </div>
  </div>
 </section>
@@ -221,6 +236,21 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
   </div>
  </div>
 </section>
+<div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectTitle">
+ <div class="project-panel">
+  <div class="eyebrow">Start your project</div>
+  <h2 id="projectTitle">Tell us what you need</h2>
+  <p>Your project details will be sent to the ADLOGOS team on WhatsApp so we can discuss the next step.</p>
+  <form class="project-form" id="projectForm">
+   <label>Selected studio<input id="projectService" name="service" readonly></label>
+   <label>Your name or business<input id="projectBusiness" name="business" required maxlength="100" placeholder="Business or contact name"></label>
+   <label>What would you like us to create?<textarea id="projectDetails" name="details" required maxlength="1200" placeholder="Describe your idea, audience, style or any details that will help us."></textarea></label>
+   <label>Your email or preferred contact (optional)<input id="projectContact" name="contact" maxlength="120" placeholder="Email or phone number"></label>
+   <div class="modal-actions"><button class="btn" type="submit">Continue to WhatsApp →</button><button class="modal-close" type="button" id="closeProject">Cancel</button></div>
+   <div class="form-note">No payment is taken here. This sends a project enquiry to WhatsApp.</div>
+  </form>
+ </div>
+</div>
 </main>
 
 <footer>
@@ -229,5 +259,40 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
   <div>© 2026 ADLOGOS. All rights reserved.</div>
  </div>
 </footer>
-</body>
+<script>
+(function(){
+ const modal=document.getElementById('projectModal');
+ const service=document.getElementById('projectService');
+ const form=document.getElementById('projectForm');
+ const close=document.getElementById('closeProject');
+ function openProject(name){
+  service.value=name;
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('projectBusiness').focus();
+ }
+ function closeProject(){
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+ }
+ document.querySelectorAll('[data-service]').forEach(function(card){
+  card.addEventListener('click',function(){openProject(card.getAttribute('data-service'));});
+ });
+ close.addEventListener('click',closeProject);
+ modal.addEventListener('click',function(e){if(e.target===modal)closeProject();});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeProject();});
+ form.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(!form.reportValidity())return;
+  const message=[
+   'Hi ADLOGOS, I would like to start a project.',
+   'Studio: '+service.value,
+   'Name/business: '+document.getElementById('projectBusiness').value.trim(),
+   'Project details: '+document.getElementById('projectDetails').value.trim(),
+   'Contact: '+(document.getElementById('projectContact').value.trim()||'Not provided')
+  ].join('\\n');
+  window.open('https://wa.me/17215593197?text='+encodeURIComponent(message),'_blank','noopener');
+ });
+})();
+</script></body>
 </html>
