@@ -312,7 +312,11 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
   });
  });
  document.querySelectorAll('[data-service]').forEach(function(card){
-  card.addEventListener('click',function(){openProject(card.getAttribute('data-service'));});
+  card.addEventListener('click',function(){
+   const routes={'AI Logo Studio':'logo','Social Ad Studio':'social','Brand Kit Creator':'brand','Ad Copy Studio':'copy','Video & Commercial Studio':'video','Voice & Radio Ads':'radio'};
+   const tool=routes[card.getAttribute('data-service')]||'copy';
+   window.location.href='studio.html?tool='+encodeURIComponent(tool);
+  });
  });
  close.addEventListener('click',closeProject);
  modal.addEventListener('click',function(e){if(e.target===modal)closeProject();});
