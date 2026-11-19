@@ -47,5 +47,6 @@ form.addEventListener("submit",e=>{e.preventDefault();let data;if(active==="copy
 document.getElementById("copyBtn").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(lastText);document.getElementById("copyBtn").textContent="Copied!";}catch(e){document.getElementById("copyBtn").textContent="Select text to copy";}});
 document.getElementById("downloadBtn").addEventListener("click",()=>{let blob,url,name;if(lastSvg){blob=new Blob([lastSvg],{type:"image/svg+xml"});name=active==="logo"?"adlogos-logo-concept.svg":"adlogos-social-ad.svg";}else{blob=new Blob([lastText],{type:"text/plain;charset=utf-8"});name="adlogos-"+active+"-draft.txt";}url=URL.createObjectURL(blob);let a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);});
 form.addEventListener("reset",()=>{result.classList.remove("show");});
-renderTool("copy");
+const requestedTool=new URLSearchParams(location.search).get("tool");
+renderTool(tools[requestedTool]?requestedTool:"copy");
 </script></body></html>
