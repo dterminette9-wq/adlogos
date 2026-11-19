@@ -102,6 +102,16 @@ section{padding:75px 0}
 .step b{color:var(--gold);font-size:13px;letter-spacing:2px}
 .step h3{margin:8px 0}
 .step p{color:var(--muted);font-size:14px}
+.pricing-section{background:#090b11}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.price-card{background:linear-gradient(145deg,#171820,#08090d);border:1px solid #59451e;border-radius:15px;padding:26px;display:flex;flex-direction:column;box-shadow:inset 0 0 18px #f5bd3508}
+.price-card.featured-price{border-color:var(--gold);box-shadow:0 0 28px #f5bd3520}
+.price-card h3{font-size:24px;margin:9px 0}
+.price-card p{color:var(--muted);font-size:14px;min-height:44px}
+.price-card ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;color:#dedee2;font-size:14px;flex:1}
+.price-card li:before{content:"✓";color:var(--gold);font-weight:900;margin-right:10px}
+.price-card .btn{text-align:center}
+.pricing-note{text-align:center;color:var(--muted);font-size:13px;margin:22px auto 0;max-width:750px}
 .contact{background:radial-gradient(ellipse at 80% 20%,#123e72,#0a101b 48%,#171008);border:1px solid #e5b33d;border-radius:17px;padding:42px;text-align:center;box-shadow:0 0 28px #f5bd3520}
 .contact h2{font-size:35px;margin:8px 0}
 .contact p{color:var(--muted);margin-bottom:20px}
@@ -115,7 +125,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
  nav{display:none}
 }
 @media(max-width:500px){
- .studio-grid,.steps{grid-template-columns:1fr}
+ .studio-grid,.steps,.pricing-grid{grid-template-columns:1fr}
  .phone-grid{gap:13px}
  .phone{padding:6px;border-width:4px}
  .phone-screen{height:260px;padding:12px 9px}
@@ -132,6 +142,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
    <a href="#studios">AI Studios</a>
    <a href="#ads">Ad Showcase</a>
    <a href="#portfolio">Portfolio</a>
+   <a href="#pricing">Pricing</a>
    <a href="#contact">Contact</a>
   </nav>
   <a class="btn" href="#contact">Get Started</a>
@@ -220,12 +231,27 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
   </div>
   <div class="steps">
    <div class="step"><b>01 / CHOOSE</b><h3>Choose Your Service</h3><p>Pick from our AI-powered design tools.</p></div>
-   <div class="step"><b>02 / CREATE</b><h3>Build Your Concept</h3><p>Generate logos, ads and more with AI.</p></div>
-   <div class="step"><b>03 / LAUNCH</b><h3>Show The World</h3><p>Download your designs and start promoting.</p></div>
+   <div class="step"><b>02 / CREATE</b><h3>Build Your Concept</h3><p>Work with ADLOGOS to shape your creative concept.</p></div>
+   <div class="step"><b>03 / LAUNCH</b><h3>Show The World</h3><p>Approve the agreed deliverables and put them to work.</p></div>
   </div>
  </div>
 </section>
 
+<section id="pricing" class="pricing-section">
+ <div class="container">
+  <div class="section-heading">
+   <div class="eyebrow">Clear quotes. No surprises.</div>
+   <h2>Pricing That Fits Your Project</h2>
+   <p>Every creative project is different. Tell us what you need and we'll provide a quote before work begins.</p>
+  </div>
+  <div class="pricing-grid">
+   <article class="price-card"><div class="eyebrow">One creative deliverable</div><h3>Single Project</h3><p>For a focused design or advertising need.</p><ul><li>Logo or graphic design</li><li>Single social media ad</li><li>Ad copy or promotional concept</li></ul><a class="btn" href="#contact" data-quote="Single Project">Request a Quote</a></article>
+   <article class="price-card featured-price"><div class="eyebrow">Multiple deliverables</div><h3>Campaign Package</h3><p>For businesses promoting a product, service or event.</p><ul><li>Coordinated campaign visuals</li><li>Social media creative assets</li><li>Matching promotional copy</li></ul><a class="btn" href="#contact" data-quote="Campaign Package">Request a Quote</a></article>
+   <article class="price-card"><div class="eyebrow">Build your brand</div><h3>Brand Identity</h3><p>For a new business or a brand refresh.</p><ul><li>Logo and visual direction</li><li>Brand colors and typography</li><li>Starter promotional materials</li></ul><a class="btn" href="#contact" data-quote="Brand Identity">Request a Quote</a></article>
+  </div>
+  <p class="pricing-note">No hidden checkout or automatic charges. Scope, price, turnaround and deliverables are agreed with you before the project starts.</p>
+ </div>
+</section>
 <section id="contact">
  <div class="container">
   <div class="contact">
@@ -275,6 +301,16 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
   modal.classList.remove('open');
   document.body.style.overflow='';
  }
+ document.querySelectorAll('[data-quote]').forEach(function(link){
+  link.addEventListener('click',function(){
+   const quote=link.getAttribute('data-quote');
+   document.getElementById('projectService').value=quote+' enquiry';
+   document.getElementById('projectDetails').value='I would like a quote for: '+quote+'. Please contact me to discuss scope, price and delivery.';
+   modal.classList.add('open');
+   document.body.style.overflow='hidden';
+   document.getElementById('projectBusiness').focus();
+  });
+ });
  document.querySelectorAll('[data-service]').forEach(function(card){
   card.addEventListener('click',function(){openProject(card.getAttribute('data-service'));});
  });
