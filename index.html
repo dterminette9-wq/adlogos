@@ -48,6 +48,17 @@ h1 span{color:var(--gold);text-shadow:0 5px 22px #f5bd3560}
 .feature-visual{height:250px;border-radius:12px;background:linear-gradient(#02050a55,#02050a88),url("assets/presenter.jpg") center 28%/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;border:1px solid #4d79c9;box-shadow:inset 0 0 30px #0009,0 0 20px #087cff30}
 .feature-visual strong{font-size:27px;letter-spacing:2px}
 .feature-visual span{display:block;color:#f0d69a;font-size:12px;letter-spacing:4px}
+.showcase-card{background:linear-gradient(145deg,#171a25,#07080c 65%,#24190b)}
+.hero-ad-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:118px 118px;gap:10px}
+.hero-ad{border:1px solid #b38a3b;border-radius:10px;padding:13px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;background-size:cover;background-position:center;box-shadow:inset 0 -65px 45px #000a}
+.hero-ad:after{content:"";position:absolute;inset:0;background:linear-gradient(130deg,#0003,#0008);pointer-events:none}
+.hero-ad>*{position:relative;z-index:1;text-shadow:0 2px 8px #000}
+.hero-ad span{font-size:9px;letter-spacing:2px;color:#ffe5a2;font-weight:800}
+.hero-ad strong{font-size:18px;line-height:1.05;max-width:180px}
+.hero-ad-tropical{grid-row:span 2;background-image:url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,0% center}
+.hero-ad-coffee{background-image:url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,33.333% center}
+.hero-ad-style{background-image:url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,66.666% center}
+@media(max-width:500px){.hero-ad-grid{grid-template-rows:100px 100px}.hero-ad strong{font-size:15px}}
 section{padding:75px 0}
 .section-heading{text-align:center;margin-bottom:38px}
 .section-heading h2{font-size:clamp(29px,4vw,40px);margin:8px 0;text-shadow:0 0 18px #f5bd3520}
@@ -90,7 +101,7 @@ section{padding:75px 0}
 .phone-screen .ad-foot{font-size:10px;border-top:1px solid #ffffff66;padding-top:9px}
 .summer{background-image:linear-gradient(#03101a44,#03101a99),url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,0% center;}
 .coffee{background-image:linear-gradient(#13080044,#13080099),url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,33.333% center;}
-.beatriddims{background-image:linear-gradient(#02081755,#020817bb),url("assets/beatriddims-hero.svg");background-size:cover;border:1px solid #377dff;}
+.glow{background-image:linear-gradient(#12050b55,#12050bbb),url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,100% center;border:1px solid #b98955;}
 .stride{background-image:linear-gradient(#020b1955,#020b19bb),url("assets/campaigns.jpg");background-size:cover,400% 100%;background-position:center,0% center;}
 .phone-caption{margin-top:13px;color:var(--muted);font-size:13px}
 .portfolio-grid{display:flex;gap:17px;overflow-x:auto;padding:8px 3px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) #24252b}
@@ -178,13 +189,17 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
    </div>
    <p class="hero-note">Your browser-based creative workspace is ready to use. No account or payment required.</p>
   </div>
-  <div class="feature-card">
-   <div class="feature-top"><span class="eyebrow">Featured AI product</span><span class="tag">POWERED BY AI</span></div>
-   <h2>BeatRiddims AI</h2>
-   <p>Turn your music into powerful AI music video visuals.</p>
-   <div class="feature-visual"><div><strong>BEATRIDDIMS</strong><span>YOUR MUSIC. YOUR VISUALS.</span></div></div>
-   <p style="margin-top:17px">Discover creative tools and services from the ADLOGOS family.</p>
-   <a class="btn" href="https://beatriddims.com" target="_blank" rel="noopener">Explore BeatRiddims</a>
+  <div class="feature-card showcase-card">
+   <div class="feature-top"><span class="eyebrow">ADLOGOS campaign showcase</span><span class="tag">CREATE • DESIGN • ADVERTISE</span></div>
+   <h2>Make Your Brand Stand Out.</h2>
+   <p>From product promotions to event campaigns, bring your next big idea to life.</p>
+   <div class="hero-ad-grid" aria-label="Sample advertising campaigns">
+    <div class="hero-ad hero-ad-tropical"><span>SUMMER</span><strong>FEEL THE VIBE</strong></div>
+    <div class="hero-ad hero-ad-coffee"><span>NOVA COFFEE</span><strong>WAKE UP TO BETTER</strong></div>
+    <div class="hero-ad hero-ad-style"><span>STRIDE ACTIVE</span><strong>MOVE BEYOND</strong></div>
+   </div>
+   <p style="margin-top:17px">One creative studio for the ideas that move your business forward.</p>
+   <a class="btn" href="#studios">Explore Creative Studios</a>
   </div>
  </div>
 </section>
@@ -224,7 +239,7 @@ footer{border-top:1px solid #25262c;padding:27px 0;color:var(--muted);font-size:
   <div class="phone-grid">
    <div class="phone-wrap"><div class="phone"><div class="phone-screen summer"><span class="ad-label">SUMMER COLLECTION</span><h3>Summer<br>Vibes</h3><p>Bring the heat. Make every moment count.</p><div class="ad-foot">NEW SEASON • NEW STYLE</div></div></div><div class="phone-caption">Summer Vibes Campaign</div></div>
    <div class="phone-wrap"><div class="phone"><div class="phone-screen coffee"><span class="ad-label">NOVA COFFEE</span><h3>Wake Up<br>To Better.</h3><p>Your daily moment of goodness.</p><div class="ad-foot">FRESHLY BREWED • EVERY DAY</div></div></div><div class="phone-caption">Nova Coffee Advertisement</div></div>
-   <div class="phone-wrap"><div class="phone"><div class="phone-screen beatriddims"><span class="ad-label">BEATRIDDIMS AI</span><h3>YOUR MUSIC.<br>YOUR VISUALS.</h3><p>Turn your track into an AI music video.</p><div class="ad-foot">CREATE YOUR NEXT VIDEO</div></div></div><div class="phone-caption">BeatRiddims AI Campaign</div></div>
+   <div class="phone-wrap"><div class="phone"><div class="phone-screen glow"><span class="ad-label">GLOW LAB</span><h3>Glow<br>With Confidence.</h3><p>Skincare made for your everyday radiance.</p><div class="ad-foot">DISCOVER YOUR GLOW</div></div></div><div class="phone-caption">Glow Lab Beauty Campaign</div></div>
    <div class="phone-wrap"><div class="phone"><div class="phone-screen stride"><span class="ad-label">STRIDE ACTIVE</span><h3>Move<br>Beyond.</h3><p>Made for your next challenge.</p><div class="ad-foot">PERFORMANCE • STYLE • ENERGY</div></div></div><div class="phone-caption">Stride Active Campaign</div></div>
   </div>
  </div>
